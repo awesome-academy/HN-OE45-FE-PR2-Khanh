@@ -34,39 +34,37 @@ function CartItem({item, stt, getCartDelete, toggleIsChangeQuantity, cartItems }
     }
 
     return (
-        <tbody>
-            <tr>
-                <td>{stt}</td>
-                <td>
-                    <img alt={item.name} src={`./assets/images/${image}`} />
-                </td>
-                <td>{name}</td>
-                <td>{price}$</td>
-                <td>
-                    <button className={styles["btn-qnt"]}
-                            onClick={()=>handleChangeQnt('decrement')}
-                    >
-                        &#8722;
-                    </button>
-                    <input className={clsx(styles["input-qnt"], "w-50")} 
-                        value={quantity} 
-                        onChange={(e) => handleChangeQnt(e)}
-                    />
-                    <button className={styles["btn-qnt"]}
-                            onClick={()=>handleChangeQnt('increment')}
-                    >
-                        &#43;
-                    </button>
-                </td>
-                <td>{price * quantity}$</td>
-                <td>
-                    <DeleteBinLineIcon
-                        className={styles['delete-icon']}
-                        onClick={()=>getCartDelete(id)}
-                    />
-                </td>
-            </tr>
-        </tbody>
+        <tr>
+            <td>{stt}</td>
+            <td>
+                <img alt={item.name} src={`./assets/images/${image}`} />
+            </td>
+            <td>{name}</td>
+            <td>{price}$</td>
+            <td>
+                <button className={styles["btn-qnt"]}
+                        onClick={()=>handleChangeQnt('decrement')}
+                >
+                    &#8722;
+                </button>
+                <input className={clsx(styles["input-qnt"], "w-50")} 
+                    value={quantity} 
+                    onChange={(e) => handleChangeQnt(e)}
+                />
+                <button className={styles["btn-qnt"]}
+                        onClick={()=>handleChangeQnt('increment')}
+                >
+                    &#43;
+                </button>
+            </td>
+            <td>{price * quantity}$</td>
+            <td>
+                <DeleteBinLineIcon
+                    className={styles['delete-icon']}
+                    onClick={()=>getCartDelete(id)}
+                />
+            </td>
+        </tr>
     );
 }
 

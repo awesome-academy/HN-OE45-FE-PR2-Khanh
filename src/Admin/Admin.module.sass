@@ -1,0 +1,11 @@
+@import ../styles/_mixins
+
+.wrapper
+    display: flex
+    .admin-content
+        width: 100%
+    .toast
+        @include position($position: fixed, $top: 2rem, $right: 2rem)
+        position: fixed
+        top: 2rem
+        right: 2rem

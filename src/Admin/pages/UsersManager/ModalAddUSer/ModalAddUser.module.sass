@@ -1,0 +1,24 @@
+@import ../../../../styles/_mixins
+@import ../../../../styles/_variables
+
+.modal-add
+    position: absolute
+    background: #ccc
+    width: 35rem
+    padding: 2rem
+    top: 0
+    left: 30%
+    margin: auto
+    background-color: white
+    border-radius:10px
+    border: 1px solid rgba(0, 0, 0, 0.3)
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3)
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3)
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3)
+    -webkit-background-clip: padding-box
+    -moz-background-clip: padding-box
+    background-clip: padding-box
+    .modal-add--close
+        @include position($position: absolute, $top: 0, $right: 0)
+        &:hover
+            cursor: pointer

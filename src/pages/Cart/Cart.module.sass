@@ -2,15 +2,20 @@
 @import ../../styles/_mixins
 
 .cart
-    margin-top: 5rem
+    margin: 3rem 0
     padding: 0 2rem
     position: relative
+    @include flex($flex-direction: column)
+    img
+        width: 20rem
     h2
         @include text($font-size: 2.4rem, $font-weight: 500)
         margin-bottom: 2rem
     .table-cart
         font-size: 2rem
         text-align: center
+        @include maxWidth($mobile)
+            overflow-x: auto
     td
         font-size: 1.8rem
         vertical-align: middle
@@ -49,10 +54,34 @@
         padding: 0.8rem 1.2rem
         border: 0.1rem solid $boder-blue-color
         border-radius: 0.5rem
-        margin-right: 2rem
+        margin-bottom: 3rem
         text-decoration: none
         font-size: 2rem
         text-align: center
         &:hover
             background: $text-blue
             color: $white-color
+    .subtotal 
+        width: 35%
+        @include maxWidth($mobile)
+            width: 100%
+        .totalRow 
+            padding: .5em
+            text-align: right
+        &.final 
+            font-size: 2rem
+            font-weight: bold
+        span 
+            display: inline-block
+            padding: 0 0 0 1em
+            text-align: right
+        .label 
+            font-size: 2rem
+            text-transform: uppercase
+            color: $text-black
+            font-weight: 500
+        .value 
+            font-size: 2rem
+            text-transform: uppercase
+            color: $text-black
+            width: 35%

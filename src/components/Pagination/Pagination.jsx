@@ -4,21 +4,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setFilter, setCurrentPage } from '../../store/slices/ProductSlice'
 import { useTranslation } from 'react-i18next';
 import NumberedList from './NumberedList/NumberedList';
+import { setFilterUser } from "../../store/slices/UserSlice"
 
-function Pagination() {
+function Pagination({ _limit, _totalRows }) {
 
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const pagination = useSelector( state => state.products.pagination)
-    const filter = useSelector( state => state.products.filter)
-    const currentPage = useSelector( state => state.products.currentPage)
-    const { _limit, _totalRows } = pagination
+    const filter = useSelector(state => state.products.filter)
+    const currentPage = useSelector(state => state.products.currentPage)
     const totalPages = Math.ceil(_totalRows / _limit)
+    const filterUser = useSelector(state => state.user.filterUser)
 
     function handlePageChange(newPage) {
         dispatch(setCurrentPage(newPage));
         dispatch(setFilter({
             ...filter,
+            _page: newPage
+        }))
+        dispatch(setFilterUser({
+            ...filterUser,
             _page: newPage
         }))
     }

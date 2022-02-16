@@ -6,12 +6,18 @@
     column-gap: 2rem
     border: 1px solid $border-gray
     border-radius: 5px
+    img
+        width: 38rem
+        @include maxWidth($tablet)
+            width: 30rem
+        height: auto
+        border-top-left-radius: 0.5rem
+        border-bottom-left-radius: 0.5rem
     .product-preview
         @include flex($flex-direction: column, $justify-content: center)
         padding: 1rem
-        row-gap: 1.5rem
         .product-name
-            @include text($font-size: 3rem, $font-weight: 700)
+            @include text($font-size: 2rem, $font-weight: 700)
         .product-price
             @include text($font-size: 2.4rem, $font-weight: 700)
         .product-desc

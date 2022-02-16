@@ -10,6 +10,7 @@
     @include position($position: relative)
     max-width: 136.6rem
     height: 100%
+    background: $text-blue
     .logo
         @include maxWidth($tablet)
             width: 25rem
@@ -22,14 +23,17 @@
             display: none
         width: 100%
     .change-language
-        color: $icon-color
+        color: $white-color
         &:hover
-            color: $text-blue
             cursor: pointer
     .header-search
         @include position($position: relative)
         input
             @include maxWidth($desktop)
+                max-width: 40rem
+            @include maxWidth($tablet)
+                max-width: 25rem
+            @include maxWidth($mobile)
                 max-width: 40rem
             @include text($font-size: 2rem)
             width: 50.8rem
@@ -43,27 +47,34 @@
             @include maxWidth($desktop)
                 margin: 1rem
             @include maxWidth($tablet)
-                margin: 0.4rem
+                margin: 1rem
             margin: 1.2rem
         .search-icon
             @include position($position: absolute, $top: 0, $left: 0)
             color: $icon-color
         .close-icon
             @include position($position: absolute, $top: 0, $right: 0)
-            color: $text-blue
             &:hover
                 cursor: pointer
     .account
-        @include flex($flex-direction: row)
+        display: flex
+        @include maxWidth($mobile)
+            width: 100%
+            justify-content: space-between
         a
             text-decoration: none
         .sign-in, .register, .cart
             @include maxWidth($tablet)
-                width: 16rem 
+                width: 13rem 
+                font-size: 1.6rem
+            @include maxWidth($mobile)
+                width: 15rem 
+                font-size: 2rem
+                margin: 0
             @include flex($flex-direction: row, $justify-content: center, $align-items: center)
             @include text($font-size: 2rem, $font-weight: 700)
             width: 15rem
-            color: $text-blue
+            color: $white-color
             padding: 0.8rem 1.2rem
             border: 0.1rem solid $boder-blue-color
             border-radius: 0.5rem
@@ -79,7 +90,7 @@
         @include maxWidth($mobile)
             @include position($position: absolute, $top: 5rem, $right: 2rem)
             display: block
-            color: $icon-color
+            color: $white-color
         display: none
     .toggle
         @include flex($flex-direction: row, $justify-content: space-between, $align-items: center)
@@ -96,5 +107,7 @@
         padding: 0.8rem 1.2rem
         border-radius: 0.5rem
         margin-right: 2rem
+        color: $white-color
+        border-color: $white-color
     .drop-item
         font-size: 2rem

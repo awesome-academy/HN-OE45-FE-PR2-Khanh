@@ -9,6 +9,7 @@ import { setCartsLength, setValueInputPayment} from '../../store/slices/CartSlic
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import clsx from 'clsx'
 
 function Cart() {
     const { t } = useTranslation()
@@ -60,7 +61,7 @@ function Cart() {
     return (
         <div className={styles["cart"]}>
             {
-                hasLinkToPayment ? <h2>{t("My cart")} :</h2> : <h2>{t("Review cart")} :</h2>
+                hasLinkToPayment ? <h2>{t("My cart")}</h2> : <h2>{t("Review cart")} :</h2>
             }
             {
                 isOpenConfirmModal ?
@@ -81,7 +82,7 @@ function Cart() {
                 : null
             }
             <div className={styles["table-cart"]}>
-                <Table bordered className={styles["table-cart"]}>
+                <Table bordered>
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -93,55 +94,55 @@ function Cart() {
                             <th>{t("Delete")}</th>
                         </tr>
                     </thead>
-                    {   cartsLength 
-                        ? 
-                        cartItems.map((item, index) => {
-                            return (
-                                <CartItem 
-                                    key={index}
-                                    item={item}
-                                    stt={cartItems.indexOf(item) + 1}
-                                    getCartDelete={getCartDelete}
-                                    toggleIsChangeQuantity={toggleIsChangeQuantity}
-                                    cartItems={cartItems}
-                                />
-                            )
-                        })
-                        :
-                        <tbody>
+                    <tbody>
+                        {   cartsLength 
+                            ? 
+                            cartItems.map((item, index) => {
+                                return (
+                                    <CartItem 
+                                        key={index}
+                                        item={item}
+                                        stt={cartItems.indexOf(item) + 1}
+                                        getCartDelete={getCartDelete}
+                                        toggleIsChangeQuantity={toggleIsChangeQuantity}
+                                        cartItems={cartItems}
+                                    />
+                                )
+                            })
+                            :
                             <tr>
                                 <td className="ta-center" colSpan="7">Chưa có sản phẩm</td>
                             </tr>
-                        </tbody>
-                    }
+                        }
+                    </tbody>
                 </Table>
             </div>
-            {
-                totalPay 
-                ? 
-                <div className={styles["cart-pay"]}>
-                        <Table bordered className={styles["table-cart"]} >
-                            <thead>
-                                <tr>
-                                    <th>Total Price(No VAT)</th>
-                                    <th>VAT</th>
-                                    <th>Total Price(+ VAT)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{totalPay}$</td>
-                                    <td>{vat}%</td>
-                                    <td>{totalPayVAT}$</td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                </div>
-                : null
-            }
-            {
-                hasLinkToPayment && <Link to={nextPayment ? "/payment" : "/cart"} className={styles['btn-payment']} onClick={handleSetValueInputPayment}>Payment</Link>
-            }
+            <div className="d-flex flex-column align-items-end">
+                {
+                    totalPay 
+                    ? 
+                    <div className={clsx(styles["subtotal"], "cf", "mb-5")}>
+                        <ul style={{listStyle: "none"}}>
+                            <li className={styles["totalRow"]}>
+                                <span className={styles["label"]}>Total Price(No VAT)</span>
+                                <span class={styles["value"]}>{totalPay}$</span>
+                            </li>
+                            <li className={styles["totalRow"]}>
+                                <span class={styles["label"]}>VAT</span>
+                                <span class={styles["value"]}>{vat}%</span>
+                            </li>
+                            <li className={clsx(styles["totalRow"], "final")}>
+                                <span class={styles["label"]}>Total Price(+ VAT)</span>
+                                <span class={styles["value"]}>{totalPayVAT}$</span>
+                            </li>
+                        </ul>
+                    </div>
+                    : null
+                }
+                {
+                    hasLinkToPayment && <Link to={nextPayment ? "/payment" : "/cart"} className={styles['btn-payment']} onClick={handleSetValueInputPayment}>Payment</Link>
+                }
+            </div>
         </div>
     );
 }

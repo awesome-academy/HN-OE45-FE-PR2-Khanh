@@ -2,9 +2,15 @@
 @import ../../../../styles/_mixins
 
 .rating
+    border-radius: 1rem
+    background-color: $white-color
+    margin-bottom: 2rem
+    @include maxWidth($mobile)
+        display: none
     h2
         @include text($font-size: 2.4rem, $font-weight: 500)
         margin-bottom: 2rem
+        padding-left: 1rem
     .rating-star
         color: $bg-star
         padding-bottom: 1rem 
@@ -12,3 +18,5 @@
         &:hover
             color: $bg-star-hover
             cursor: pointer
+    .active
+        color: $bg-star-hover

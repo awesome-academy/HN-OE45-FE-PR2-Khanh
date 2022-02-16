@@ -1,10 +1,15 @@
+@import ../../styles/_mixins
+@import ../../styles/_variables
+
 .form-gr
     .form-input
         font-size: 1.6rem
         width: 30rem
+        @include maxWidth($mobile)
+            width: 100%
     .form-label
         font-size: 2rem
     .error
-        margin-left: 2rem
         font-size: 1.4rem
         color: red
+        width: 30rem

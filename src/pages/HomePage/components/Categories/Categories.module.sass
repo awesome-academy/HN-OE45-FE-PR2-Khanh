@@ -2,9 +2,13 @@
 @import ../../../../styles/_mixins
 
 .categories
+    border-radius: 1rem
+    background-color: $white-color
+    margin-top: 2rem
     h2
         @include text($font-size: 2.4rem, $font-weight: 500)
         margin-bottom: 2rem
+        padding-left: 1rem
     .list-categories
         list-style: none
         padding-left: 2rem
@@ -15,3 +19,5 @@
         &:hover
             color: $text-blue
             cursor: pointer
+    .active
+        color: $text-blue

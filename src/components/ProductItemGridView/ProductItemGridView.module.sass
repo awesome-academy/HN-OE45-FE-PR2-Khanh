@@ -1,22 +1,47 @@
 @import ../../styles/_variables
 @import ../../styles/_mixins
     
-.item-products
+.product-items
+    @include flex($flex-direction: column, $justify-content: flex-start, $align-items: center)
     width: calc(25% - 20px)
+    @include maxWidth($tablet)
+        width: calc(33.33% - 10px)
+        margin: 0 0.5rem
+    @include maxWidth($mobile)
+        width: calc(50% - 5px)
+        margin: 0 2px
     margin: 0 10px
     border: 1px solid $border-gray
-    border-radius: 5px
-    @include flex($flex-direction: column, $justify-content: center)
+    border-radius: 0.5rem
+    height: auto
+    img
+        width: 100%
+        height: auto
+        border-top-left-radius: 0.5rem
+        border-top-right-radius: 0.5rem
     .product-preview
         @include flex($flex-direction: column)
         padding: 1rem
-        row-gap: 1.5rem
+        row-gap: 1rem
+        &__top, &__bottom
+            @include flex($flex-direction: column)
+            row-gap: 1rem
+        &__top
+            height: 12rem
         .product-name
-            @include text($font-size: 3rem, $font-weight: 700)
+            @include text($font-size: 2rem, $font-weight: 700)
+            display: -webkit-box
+            -webkit-box-orient: vertical
+            -webkit-line-clamp: 2
+            overflow: hidden
         .product-price
             @include text($font-size: 2.4rem, $font-weight: 700)
         .product-desc
             font-size: 1.6rem
+            display: -webkit-box
+            -webkit-box-orient: vertical
+            -webkit-line-clamp: 2
+            overflow: hidden
         .product-rating
             color: $bg-star
         .add-cart    
@@ -26,7 +51,6 @@
             border-radius: 5px
             border: 1px solid $border-gray
             padding: 0.5rem 1rem
-            margin-top: 1rem
             &:hover
                 background: $text-blue
                 color: $white-color

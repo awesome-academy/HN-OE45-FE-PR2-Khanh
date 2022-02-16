@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from './Navtypes.module.sass'
-import { setFilter, setCurrentPage } from '../../../../store/slices/ProductSlice' 
+import { setFilter, setCurrentPage, setSelectedType } from '../../../../store/slices/ProductSlice' 
 import { useSelector, useDispatch } from 'react-redux'
+import clsx from 'clsx'
 
 function NavTypes() {
-
     const dispatch = useDispatch()
-    const filter = useSelector(state => state.products.filter)
+    const { filter, selected } = useSelector(({products}) => products)
     const { typesList } = useSelector(state => state.products.types)
+    const { type } = selected
 
     function handleFilterTypes(item) {
         dispatch(setFilter({
@@ -15,6 +16,7 @@ function NavTypes() {
             _page: 1,
             type_like: item
         }))
+        dispatch(setSelectedType(item))
         dispatch(setCurrentPage(1))
     }
 
@@ -24,7 +26,13 @@ function NavTypes() {
                 {
                     typesList.map( (item, index) => {
                         return (
-                            <li className={styles["item-types"]} key={index} onClick={() => handleFilterTypes(item)}>
+                            <li className={clsx(styles["item-types"],
+                                type && type.includes(item)
+                                ? styles["active"] : ""
+                                )} 
+                                key={index} 
+                                onClick={() => handleFilterTypes(item)}
+                            >
                                 {item}
                             </li>
                         )

@@ -3,20 +3,26 @@
 
 .form-payments
     padding: 0 2rem
-    width: 50vw
+    width: 70rem
     border: 1px solid $border-gray
     border-radius: 1rem
-    margin: 0 auto
+    margin: 5rem auto
     padding-top: 2rem
     padding-bottom: 2rem
     box-shadow: 0 0.2rem 0.7rem $box-shadow
-    .form-input
+    @include maxWidth($mobile)
+        width: 100%
+    .form-gr
         @include flex($flex-direction: row, $justify-content: space-between, $align-items: center)
         flex-wrap: wrap
         gap: 2rem
+        @include maxWidth($mobile)
+            @include flex($flex-direction: column, $align-items: center)
     .form-select
         width: 30rem
         font-size: 1.6rem
+        @include maxWidth($mobile)
+            width: 100%
     .form-label
         font-size: 2rem
     .form-title

@@ -3,7 +3,9 @@
 
 .form-confirm-payments
     padding: 0 2rem
-    width: 50vw
+    width: 70rem
+    @include maxWidth($mobile)
+        width: 100%
     border: 1px solid $border-gray
     border-radius: 1rem
     margin: 0 auto
@@ -14,6 +16,8 @@
         @include flex($flex-direction: row, $justify-content: space-between, $align-items: center)
         flex-wrap: wrap
         gap: 2rem
+        @include maxWidth($mobile)
+            @include flex($flex-direction: column)
     .form-select
         width: 30rem
         font-size: 1.6rem
