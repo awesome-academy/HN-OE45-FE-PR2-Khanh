@@ -7,11 +7,13 @@ import { handleAddToCartLocal, getAddCartMessage, getLocalStorage } from '../../
 import { setNotification } from '../../store/slices/NotificationSlice'
 import { setCartsLength } from '../../store/slices/CartSlice';
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function ProductItem({item}) {
     const { t } = useTranslation()
     const dispatch = useDispatch()
     const localCartItems = getLocalStorage('local-cart')
+    let href = `/product-details/${item.id}`
 
     function handleAddToCart(item) {
         const newCartItem = { ...item, quantity: 1 }
@@ -24,7 +26,9 @@ function ProductItem({item}) {
 
     return (
         <div className={styles["item-products"]}>
-            <img src={`./assets/images/${item.image}`} alt="img" />
+            <Link to={href} className="text-center">
+                <img src={`../assets/images/${item.image}`} alt="img"/>
+            </Link>
             <div className={styles["product-preview"]}>
                 <span className={styles["product-name"]}>{item.name}</span>
                 <span className={styles["product-price"]}>{item.price}$</span>

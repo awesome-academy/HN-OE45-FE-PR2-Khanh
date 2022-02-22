@@ -40,7 +40,19 @@ const initialState = {
     currentPage: 1,
     error: null,
     inputSearch: '',
-    relatedSearch: []
+    relatedSearch: [],
+    productDetails: {
+        content: [],
+        isLoading: false,
+        similar: {
+            isLoading: false,
+            list: []
+        },
+        filter: {
+            _page: 1,
+            _limit: 2
+        }
+    }
 }
 
 export const getAllProducts = createAsyncThunk(
@@ -100,6 +112,33 @@ export const getPostApi = createAsyncThunk(
     }
 )
 
+export const getProductDetailsDbJson = createAsyncThunk(
+    'products/details',
+    async (id, { rejectWithValue }) => {
+        try {
+            const res = await axios.get(`http://localhost:4000/data?id=${id}`)
+            return res.data
+        } 
+        catch (err) {
+            return rejectWithValue(err.res.data)
+        }
+    }
+)
+
+export const getSimilarProducts = createAsyncThunk(
+    'products/similar',
+    async (filter, { rejectWithValue }) => {
+        try {
+            const paramString = queryString.stringify(filter)
+            const res = await axios.get(`http://localhost:4000/data?${paramString}`)
+            return res.data
+        }
+        catch(err) {
+            return rejectWithValue(err.res.data)
+        }
+    }
+)
+
 export const ProductsSlice = createSlice({
     name: 'products',
     initialState,
@@ -135,6 +174,9 @@ export const ProductsSlice = createSlice({
         },
         setRelatedSearch: (state, action) => {
             state.relatedSearch.push(action.payload)
+        },
+        setFilterSimilar: (state, action) => {
+            state.productDetails.filter = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -205,9 +247,40 @@ export const ProductsSlice = createSlice({
                     state.error = action.error.message
                 }
             })
+            .addCase(getProductDetailsDbJson.pending, (state) => {
+                state.productDetails.isLoading = true
+            })
+            .addCase(getProductDetailsDbJson.fulfilled, (state, action) => {
+                state.productDetails.isLoading = false
+                state.productDetails.content = action.payload   
+            })
+            .addCase(getProductDetailsDbJson.rejected, (state, action) => {
+                state.productDetails.isLoading = false
+                if (action.payload) {
+                    state.error = action.payload.errorMessage
+                } else {
+                    state.error = action.error.message
+                }
+            })
+            .addCase(getSimilarProducts.pending, (state) => {
+                state.productDetails.similar.isLoading = true
+            })
+            .addCase(getSimilarProducts.fulfilled, (state, action) => {
+                state.productDetails.similar.isLoading = false
+                // const similarList = action.payload.filter(item => item.id !== state.productDetails.content[0].id)
+                state.productDetails.similar.list = action.payload
+            })
+            .addCase(getSimilarProducts.rejected, (state, action) => {
+                state.productDetails.similar.isLoading = false
+                if (action.payload) {
+                    state.error = action.payload.errorMessage
+                } else {
+                    state.error = action.error.message
+                }
+            })
     }
 })
 
-export const { setFilter, setCurrentPage, clearAllFilter, setInputSearch, setRelatedSearch } = ProductsSlice.actions
+export const { setFilter, setCurrentPage, clearAllFilter, setInputSearch, setRelatedSearch, setFilterSimilar } = ProductsSlice.actions
 
 export default ProductsSlice.reducer

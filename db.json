@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Một",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
-      "detail_desc": "",
+      "detail_desc": "Chế độ chiến dịch có môi trường rộng hơn và cởi mở hơn so với các phần trước trong sê-ri, với nhiều lựa chọn hơn về cách hoàn thành cấp độ và cách tiếp cận chiến đấu. Người chơi có thể điều khiển nhiều nhân vật trong chiến dịch. Nếu người chơi chết trong phần mở đầu, họ sẽ điều khiển một người lính và vai trò khác thay vì hồi sinh lại ở một điểm lưu. Khi người chơi chết, tên và năm sinh/mất của người lính mà họ điều khiển sẽ xuất hiện trên màn hình.",
       "brand": "Youtube",
       "type": "Action",
       "price": 123,
@@ -139,238 +139,82 @@
       "rating": 1,
       "price_range": "50-100",
       "label": "Features"
+    },
+    {
+      "id": 11,
+      "name": "Mười Một",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "Chế độ chiến dịch có môi trường rộng hơn và cởi mở hơn so với các phần trước trong sê-ri, với nhiều lựa chọn hơn về cách hoàn thành cấp độ và cách tiếp cận chiến đấu. Người chơi có thể điều khiển nhiều nhân vật trong chiến dịch. Nếu người chơi chết trong phần mở đầu, họ sẽ điều khiển một người lính và vai trò khác thay vì hồi sinh lại ở một điểm lưu. Khi người chơi chết, tên và năm sinh/mất của người lính mà họ điều khiển sẽ xuất hiện trên màn hình.",
+      "brand": "Netflix",
+      "type": "Account",
+      "price": 1990,
+      "categories": "Entertainment",
+      "image": "Pr3.png",
+      "rating": 1,
+      "price_range": "50-100",
+      "label": "features"
+    },
+    {
+      "id": 12,
+      "name": "Mười Hai",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "Chế độ chiến dịch có môi trường rộng hơn và cởi mở hơn so với các phần trước trong sê-ri, với nhiều lựa chọn hơn về cách hoàn thành cấp độ và cách tiếp cận chiến đấu. Người chơi có thể điều khiển nhiều nhân vật trong chiến dịch. Nếu người chơi chết trong phần mở đầu, họ sẽ điều khiển một người lính và vai trò khác thay vì hồi sinh lại ở một điểm lưu. Khi người chơi chết, tên và năm sinh/mất của người lính mà họ điều khiển sẽ xuất hiện trên màn hình.",
+      "brand": "Youtobe",
+      "type": "Education",
+      "price": 1530,
+      "categories": "Entertainment",
+      "image": "Pr3.png",
+      "rating": 1,
+      "price_range": "50-100",
+      "label": "features"
+    },
+    {
+      "id": 13,
+      "name": "Mười Ba",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "Chế độ chiến dịch có môi trường rộng hơn và cởi mở hơn so với các phần trước trong sê-ri, với nhiều lựa chọn hơn về cách hoàn thành cấp độ và cách tiếp cận chiến đấu. Người chơi có thể điều khiển nhiều nhân vật trong chiến dịch. Nếu người chơi chết trong phần mở đầu, họ sẽ điều khiển một người lính và vai trò khác thay vì hồi sinh lại ở một điểm lưu. Khi người chơi chết, tên và năm sinh/mất của người lính mà họ điều khiển sẽ xuất hiện trên màn hình.",
+      "brand": "Youtobe",
+      "type": "Education",
+      "price": 1530,
+      "categories": "Entertainment",
+      "image": "Pr3.png",
+      "rating": 1,
+      "price_range": "50-100",
+      "label": "features"
+    },
+    {
+      "id": 14,
+      "name": "Mười Bốn",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "Chế độ chiến dịch có môi trường rộng hơn và cởi mở hơn so với các phần trước trong sê-ri, với nhiều lựa chọn hơn về cách hoàn thành cấp độ và cách tiếp cận chiến đấu. Người chơi có thể điều khiển nhiều nhân vật trong chiến dịch. Nếu người chơi chết trong phần mở đầu, họ sẽ điều khiển một người lính và vai trò khác thay vì hồi sinh lại ở một điểm lưu. Khi người chơi chết, tên và năm sinh/mất của người lính mà họ điều khiển sẽ xuất hiện trên màn hình.",
+      "brand": "Youtobe",
+      "type": "Education",
+      "price": 1530,
+      "categories": "Entertainment",
+      "image": "Pr3.png",
+      "rating": 1,
+      "price_range": "50-100",
+      "label": "features"
+    },
+    {
+      "id": 15,
+      "name": "Mười Năm",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "Chế độ chiến dịch có môi trường rộng hơn và cởi mở hơn so với các phần trước trong sê-ri, với nhiều lựa chọn hơn về cách hoàn thành cấp độ và cách tiếp cận chiến đấu. Người chơi có thể điều khiển nhiều nhân vật trong chiến dịch. Nếu người chơi chết trong phần mở đầu, họ sẽ điều khiển một người lính và vai trò khác thay vì hồi sinh lại ở một điểm lưu. Khi người chơi chết, tên và năm sinh/mất của người lính mà họ điều khiển sẽ xuất hiện trên màn hình.",
+      "brand": "Youtobe",
+      "type": "Education",
+      "price": 1530,
+      "categories": "Entertainment",
+      "image": "Pr3.png",
+      "rating": 1,
+      "price_range": "50-100",
+      "label": "features"
     }
   ],
-  "order": [
-    {
-      "localPaymentInfo": [
-        {
-          "fullName": "Trương Quốc Khánh",
-          "email": "khanh9a1999@gmail.com",
-          "phone": "0348397685",
-          "address": "Hà nội",
-          "message": "Nhẹ nhàng",
-          "paymentsValue": "Payment on delivery"
-        }
-      ],
-      "localCartItems": [
-        {
-          "id": 1,
-          "name": "Một",
-          "desc": "Eligibe for Shipping To Mars or somewhere elses",
-          "detail_desc": "",
-          "brand": "Youtube",
-          "type": "Action",
-          "price": 123,
-          "categories": "Entertainment",
-          "image": "Pr1.png",
-          "rating": 1,
-          "price_range": "50-100",
-          "label": "features",
-          "quantity": 1
-        },
-        {
-          "id": 2,
-          "name": "Hai",
-          "desc": "Eligibe for Shipping To Mars or somewhere elses",
-          "detail_desc": "",
-          "brand": "Netflix",
-          "type": "3D",
-          "price": 123,
-          "categories": "Work",
-          "image": "Pr1.png",
-          "rating": 2,
-          "price_range": "50-100",
-          "label": "features",
-          "quantity": 1
-        }
-      ],
-      "id": 1
-    },
-    {
-      "localPaymentInfo": [
-        {
-          "fullName": "Trương Quốc Khánh",
-          "email": "khanh9a1999@gmail.com",
-          "phone": "0348397685",
-          "address": "Hà nội",
-          "message": "nhe nhang",
-          "paymentsValue": "Bank card"
-        }
-      ],
-      "localCartItems": [
-        {
-          "id": 2,
-          "name": "Hai",
-          "desc": "Eligibe for Shipping To Mars or somewhere elses",
-          "detail_desc": "",
-          "brand": "Netflix",
-          "type": "3D",
-          "price": 123,
-          "categories": "Work",
-          "image": "Pr1.png",
-          "rating": 2,
-          "price_range": "50-100",
-          "label": "features",
-          "quantity": 1
-        }
-      ],
-      "id": 2
-    },
-    {
-      "localPaymentInfo": [
-        {
-          "fullName": "Trương Quốc Khánh",
-          "email": "khanh9a1999@gmail.com",
-          "phone": "0348397685",
-          "address": "Hà nội",
-          "message": "nhe nhang",
-          "paymentsValue": "Payment on delivery"
-        }
-      ],
-      "localCartItems": [
-        {
-          "id": 1,
-          "name": "Một",
-          "desc": "Eligibe for Shipping To Mars or somewhere elses",
-          "detail_desc": "",
-          "brand": "Youtube",
-          "type": "Action",
-          "price": 123,
-          "categories": "Entertainment",
-          "image": "Pr1.png",
-          "rating": 1,
-          "price_range": "50-100",
-          "label": "features",
-          "quantity": 1
-        },
-        {
-          "id": 2,
-          "name": "Hai",
-          "desc": "Eligibe for Shipping To Mars or somewhere elses",
-          "detail_desc": "",
-          "brand": "Netflix",
-          "type": "3D",
-          "price": 123,
-          "categories": "Work",
-          "image": "Pr1.png",
-          "rating": 2,
-          "price_range": "50-100",
-          "label": "features",
-          "quantity": 1
-        }
-      ],
-      "id": 3
-    },
-    {
-      "localPaymentInfo": [
-        {
-          "fullName": "Trương Quốc Khánh",
-          "email": "khanh9a1999@gmail.com",
-          "phone": "0348397685",
-          "address": "Hà nội",
-          "message": "Nhẹ nhàng",
-          "paymentsValue": "Payment on delivery"
-        }
-      ],
-      "localCartItems": [
-        {
-          "id": 2,
-          "name": "Hai",
-          "desc": "Eligibe for Shipping To Mars or somewhere elses",
-          "detail_desc": "",
-          "brand": "Netflix",
-          "type": "3D",
-          "price": 123,
-          "categories": "Work",
-          "image": "Pr1.png",
-          "rating": 2,
-          "price_range": "50-100",
-          "label": "features",
-          "quantity": 1
-        }
-      ],
-      "id": 4
-    },
-    {
-      "localPaymentInfo": [
-        {
-          "fullName": "Trương Quốc Khánh",
-          "email": "khanh9a1999@gmail.com",
-          "phone": "0348397685",
-          "address": "Hà nội",
-          "message": "Nhẹ nhàng",
-          "paymentsValue": "Payment on delivery"
-        }
-      ],
-      "localCartItems": [
-        {
-          "id": 2,
-          "name": "Hai",
-          "desc": "Eligibe for Shipping To Mars or somewhere elses",
-          "detail_desc": "",
-          "brand": "Netflix",
-          "type": "3D",
-          "price": 123,
-          "categories": "Work",
-          "image": "Pr1.png",
-          "rating": 2,
-          "price_range": "50-100",
-          "label": "features",
-          "quantity": 1
-        }
-      ],
-      "id": 5
-    },
-    {
-      "localPaymentInfo": [
-        {
-          "fullName": "Trương Quốc Khánh",
-          "email": "khanh9a1999@gmail.com",
-          "phone": "0348397685",
-          "address": "Hà nội",
-          "message": "Nhẹ nhàng",
-          "paymentsValue": "Bank card"
-        }
-      ],
-      "localCartItems": [
-        {
-          "id": 1,
-          "name": "Một",
-          "desc": "Eligibe for Shipping To Mars or somewhere elses",
-          "detail_desc": "",
-          "brand": "Youtube",
-          "type": "Action",
-          "price": 123,
-          "categories": "Entertainment",
-          "image": "Pr1.png",
-          "rating": 1,
-          "price_range": "50-100",
-          "label": "features",
-          "quantity": 1
-        },
-        {
-          "id": 2,
-          "name": "Hai",
-          "desc": "Eligibe for Shipping To Mars or somewhere elses",
-          "detail_desc": "",
-          "brand": "Netflix",
-          "type": "3D",
-          "price": 123,
-          "categories": "Work",
-          "image": "Pr1.png",
-          "rating": 2,
-          "price_range": "50-100",
-          "label": "features",
-          "quantity": 1
-        }
-      ],
-      "id": 6
-    }
-  ],
+  "order": [],
   "user": [
     {
-      "id": "JEVXpKVObmaNckGyTlc0B5rIphB3",
+      "id": "3ipFU08ROJUfZn2sOjalz5VoR2F2",
       "fullName": "Trương Quốc Khánh",
       "email": "khanh9a1999@gmail.com",
       "phone": "0348397685",

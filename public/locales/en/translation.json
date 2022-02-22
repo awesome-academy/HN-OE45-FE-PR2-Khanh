@@ -49,5 +49,9 @@
     "Password must match": "Password must match",
     "Email": "Email",
     "Password": "Password",
-    "Confirm password": "Confirm Password"
+    "Confirm password": "Confirm Password",
+    "Product name": "Product Name",
+    "Description": "Description",
+    "Similar products": "Similar products",
+    "Show more": "Show more"
 }

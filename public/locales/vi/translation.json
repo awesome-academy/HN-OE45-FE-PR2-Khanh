@@ -49,5 +49,9 @@
     "Password must match": "Mật khẩu với trùng với mật khẩu đăng ký",
     "Email": "Địa chỉ Email",
     "Password": "Mật khẩu",
-    "Confirm password": "Xác nhận mật khẩu"
+    "Confirm password": "Xác nhận mật khẩu",
+    "Product name": "Tên sản phẩm",
+    "Description": "Mô tả chi tiết",
+    "Similar products": "Sản phẩm tương tự",
+    "Show more": "Xem thêm"
 }

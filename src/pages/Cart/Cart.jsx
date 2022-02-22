@@ -24,7 +24,6 @@ function Cart() {
     const totalPayVAT = getTotalCartVAT(totalPay, vat)
     const hasLinkToPayment = location.pathname !== '/confirm-payment'
     const nextPayment = cartsLength > 0
-    const { fullName, phone, email } = getLocalStorage('customer-info')
 
     const toggleIsChangeQuantity = () => {
         setIsChangeQuantity(!isChange)
@@ -49,6 +48,7 @@ function Cart() {
 
     const handleSetValueInputPayment = () => {
         if (localStorage.getItem('customer-info')) {
+            const { fullName, phone, email } = getLocalStorage('customer-info')
             dispatch(setValueInputPayment({
                 fullName, 
                 email, 
