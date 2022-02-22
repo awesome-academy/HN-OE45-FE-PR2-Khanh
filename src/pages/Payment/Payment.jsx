@@ -8,7 +8,6 @@ import * as Yup from 'yup'
 import { useTranslation } from 'react-i18next'
 import { regexEmail, regexPhone } from '../../consts/consts'
 import { useNavigate } from 'react-router-dom'
-import { getLocalStorage } from '../../helper/helper'
 import { useSelector } from 'react-redux';
 
 function Payment() {

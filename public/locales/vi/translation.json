@@ -44,7 +44,7 @@
     "Please enter a valid email address": "Vui lòng nhập một địa chỉ email hợp lệ",
     "Your order has been successfully placed": "Bạn đã đặt hàng thành công",
     "Confirm delivery information": "Xác nhận địa chỉ nhận hàng",
-    "Password must be 7-19 characters": "Mật khẩu phải có 7-19 ký tự và chứa ít nhất một chữ cái, một số và một ký tự đặc biệt",
+    "Password must be 7-19 characters": "Mật khẩu phải có 7-19 ký tự và chứa ít nhất một chữ viết hoa, một chữ thường và một số",
     "Sign In": "Đăng nhập",
     "Password must match": "Mật khẩu với trùng với mật khẩu đăng ký",
     "Email": "Địa chỉ Email",

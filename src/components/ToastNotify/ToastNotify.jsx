@@ -11,7 +11,7 @@ function ToastNotify({type, message}) {
     useEffect(() => {
         setTimeout(()=> {
             dispatch(clearNotification())
-        }, 3000)
+        }, 1500)
     }, [dispatch])
 
     const setHeaderByType = (type) => {

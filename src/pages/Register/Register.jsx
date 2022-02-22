@@ -6,9 +6,19 @@ import * as Yup from 'yup'
 import styles from './Register.module.sass'
 import { regexEmail, regexPassword, regexPhone } from '../../consts/consts'
 import { useTranslation } from 'react-i18next'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from "../../firebase-config";
+import { addUserDbJson, setDisplayName } from '../../store/slices/UserSlice'
+import { useDispatch, useSelector } from 'react-redux' 
+import ToastNotify from '../../components/ToastNotify/ToastNotify'
+import { setNotification } from '../../store/slices/NotificationSlice'
+import { useNavigate } from 'react-router-dom' 
 
 function Register() {
     const { t } = useTranslation()
+    const dispatch = useDispatch()
+    const { type, message } = useSelector(state => state.notification)
+    const navigate = useNavigate()
     const formik = useFormik({
         initialValues: {
             fullName: '',
@@ -33,18 +43,44 @@ function Register() {
             password:
                 Yup.string()
                 .required(t("Required"))
-                .matches(regexPassword,t("Password must be 7-19 charactors and contain at least one letter, one number and a special charactors")),
+                .matches(regexPassword,t("Password must be 7-19 charactors and contain at least one uppercase letter, one lowercase letter and one number")),
             confirmPassword: 
                 Yup.string()
                 .required(t("Required"))
                 .oneOf([Yup.ref("password"), null], t("Password must match"))
         }),
-        onSubmit: (formValue) => {
+        onSubmit: async (formValue) => {
+            try {
+                const { fullName, email, password, phone } = formik.values
+                const userFirebase = await createUserWithEmailAndPassword(
+                    auth, 
+                    email, 
+                    password
+                )
+                const user = userFirebase.user
+                const newUser = { id: user.uid, fullName, email, phone, password, carts: [], address: [], role: 2 }
+                dispatch(setNotification({type: 'success', message: t('Register Success')}))
+                localStorage.setItem('customer-info', JSON.stringify({
+                    fullName,
+                    email,
+                    phone
+                }))
+                dispatch(addUserDbJson(newUser))
+                navigate('/')
+            } catch (err) {
+                dispatch(setNotification({type: 'error', message: t('Register Failed')}))
+                return err.message
+            }
         }
     })
 
     return (
         <section className={styles['form-register']}>
+            <div className={styles["toast"]}>
+                {
+                    message && <ToastNotify type={type} message={message}/>
+                }
+            </div>
             <Form className={styles['form-input']} onSubmit={formik.handleSubmit}>
                 <h2 className={styles['form-title']}>{t('Register')}</h2>
                 <FormGroup 

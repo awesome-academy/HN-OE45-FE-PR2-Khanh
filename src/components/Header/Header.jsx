@@ -12,6 +12,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setFilter, setCurrentPage, setInputSearch, setRelatedSearch } from '../../store/slices/ProductSlice'
 import { setCartsLength } from '../../store/slices/CartSlice';
 import useDebounce from '../../hooks/useDebounce'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { auth } from '../../firebase-config'
+import LogoutBoxLineIcon from 'remixicon-react/LogoutBoxLineIcon'
+import { DropdownButton, Dropdown } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import { getLocalStorage } from '../../helper/helper'
 
 function Header() {
     const { t, i18n } = useTranslation()
@@ -22,10 +28,26 @@ function Header() {
     const filter = useSelector(state => state.products.filter)
     const debounce = useDebounce()
     const cartsLength = useSelector(state => state.cart.cartsLength)
-
+    const [user, setUser] = useState({})
+    const navigate = useNavigate()
+    const customerInfo = getLocalStorage('customer-info')
+    
     useEffect(()=> {
         dispatch(setCartsLength(cartsLength))
     }, [cartsLength])
+
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser)
+    })
+
+    const logOut = async () => {
+        await signOut(auth)
+        localStorage.removeItem('local-cart')
+        localStorage.removeItem('customer-info')
+        localStorage.removeItem('local-payment-info')
+        dispatch(setCartsLength(0))        
+        navigate('/')
+    }
 
     function changeLanguage() {
         if(language === "en") {
@@ -89,7 +111,26 @@ function Header() {
                         }
                     </div>
                     <div className={styles["account"]}>
-                        <Link className={styles["sign-in"]} to="/signin">{t("Sign in")}</Link>
+                        {
+                            user 
+                            &&
+                            <div>
+                                <DropdownButton
+                                    variant="outline-secondary"
+                                    title={customerInfo ? customerInfo.fullName : ''}
+                                    id="input-group-dropdown-1"
+                                    variant="outline-primary"
+                                >
+                                    <Dropdown.Item href="#" className={styles['drop-item']}>Profile</Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Item onClick={logOut} className={styles['drop-item']}>
+                                        <LogoutBoxLineIcon />
+                                        Log out
+                                    </Dropdown.Item>
+                                </DropdownButton>
+                            </div> 
+                        }
+                        <Link className={styles["sign-in"]} to="/signin" style={user && { display: "none"}}>{t("Sign in")}</Link>
                         <Link className={styles["register"]} to="/register">{t("Register")}</Link>
                         <Link className={styles["cart"]} to="/cart">
                             <ShoppingCart2LineIcon className={styles["cart-icon"]} />

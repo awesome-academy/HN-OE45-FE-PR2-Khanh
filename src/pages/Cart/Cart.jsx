@@ -5,7 +5,7 @@ import { getTotalCart, getTotalCartVAT, getLocalStorage } from '../../helper/hel
 import CartItem from './CartItem/CartItem';
 import { Toast } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
-import { setCartsLength } from '../../store/slices/CartSlice'
+import { setCartsLength, setValueInputPayment} from '../../store/slices/CartSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
@@ -24,6 +24,7 @@ function Cart() {
     const totalPayVAT = getTotalCartVAT(totalPay, vat)
     const hasLinkToPayment = location.pathname !== '/confirm-payment'
     const nextPayment = cartsLength > 0
+    const { fullName, phone, email } = getLocalStorage('customer-info')
 
     const toggleIsChangeQuantity = () => {
         setIsChangeQuantity(!isChange)
@@ -44,6 +45,16 @@ function Cart() {
         localStorage.setItem('local-cart', JSON.stringify(newCarts))
         dispatch(setCartsLength(newCarts.length))
         setIsOpenConfirmModal(false)
+    }
+
+    const handleSetValueInputPayment = () => {
+        if (localStorage.getItem('customer-info')) {
+            dispatch(setValueInputPayment({
+                fullName, 
+                email, 
+                phone
+            }))
+        }
     }
 
     return (
@@ -129,7 +140,7 @@ function Cart() {
                 : null
             }
             {
-                hasLinkToPayment && <Link to={nextPayment ? "/payment" : "/cart"} className={styles['btn-payment']}>Payment</Link>
+                hasLinkToPayment && <Link to={nextPayment ? "/payment" : "/cart"} className={styles['btn-payment']} onClick={handleSetValueInputPayment}>Payment</Link>
             }
         </div>
     );
