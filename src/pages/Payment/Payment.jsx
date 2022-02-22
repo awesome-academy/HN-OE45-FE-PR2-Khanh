@@ -9,12 +9,17 @@ import { useTranslation } from 'react-i18next'
 import { regexEmail, regexPhone } from '../../consts/consts'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import { getTotalCart, getTotalCartVAT, getLocalStorage } from '../../helper/helper'
 
 function Payment() {
     const { t } = useTranslation()
     const navigate = useNavigate()
     const [payments, setPayments] = useState(null)
     const { fullName, email, phone, address } = useSelector(state => state.cart.paymentInfo)
+    const cartItems = getLocalStorage('local-cart')
+    const totalPay = getTotalCart(cartItems)
+    const vat = 10
+    const totalPayVAT = getTotalCartVAT(totalPay, vat)
     const payment_method = [
         { value: 'Bank card', label: 'Bank cart' },
         { value: 'Payment on delivery', label: 'Payment on delivery' },
@@ -46,7 +51,7 @@ function Payment() {
         }),
         onSubmit: (formValue) => {
             const paymentsValue = payments.value
-            localStorage.setItem('local-payment-info', JSON.stringify([{...formValue, paymentsValue}])) 
+            localStorage.setItem('local-payment-info', JSON.stringify([{...formValue, paymentsValue, totalPayVAT}])) 
             navigate('/confirm-payment')
         }
     })
@@ -54,7 +59,7 @@ function Payment() {
     return (
         <section className={styles['form-payments']}>
             <h2 className={styles['form-title']}>{t('Delivery information')}</h2>
-            <Form className={styles['form-input']} onSubmit={formik.handleSubmit}>
+            <Form className={styles['form-gr']} onSubmit={formik.handleSubmit}>
                 <FormGroup 
                     label={t('Full name')}
                     id='fullName'

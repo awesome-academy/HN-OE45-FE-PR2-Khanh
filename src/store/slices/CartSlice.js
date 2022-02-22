@@ -18,7 +18,7 @@ export const AddOrderToDbJson = createAsyncThunk(
     'cart/add',
     async (order, { rejectWithValue }) => {
         try {
-            const res = await axios.post('http://localhost:4000/order', order)
+            const res = await axios.post('${process.env.REACT_APP_DATA}/order', order)
             return res.data
         }
         catch(err) {

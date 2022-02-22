@@ -18,9 +18,11 @@ import LogoutBoxLineIcon from 'remixicon-react/LogoutBoxLineIcon'
 import { DropdownButton, Dropdown } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { getLocalStorage } from '../../helper/helper'
+import { useLocation } from 'react-router-dom'
 
 function Header() {
     const { t, i18n } = useTranslation()
+    const location = useLocation()
     const dispatch = useDispatch()
     const [language, setLanguage] = useState("en")
     const [toggle, setToggle] = useState(false)
@@ -31,6 +33,7 @@ function Header() {
     const [user, setUser] = useState({})
     const navigate = useNavigate()
     const customerInfo = getLocalStorage('customer-info')
+    const hasLinkToHomePage = location.pathname === '/'
     
     useEffect(()=> {
         dispatch(setCartsLength(cartsLength))
@@ -98,18 +101,21 @@ function Header() {
                     <GlobalLineIcon className={styles["change-language"]}
                         onClick={changeLanguage}
                     />
-                    <div className={styles["header-search"]}>
-                        <SearchLineIcon className={styles["search-icon"]} />
-                        <input 
-                            type="text"
-                            placeholder="Search a Products"
-                            value={inputSearch}
-                            onChange={handleSearchFilterChange}
-                        />
-                        {
-                            inputSearch && <CloseLineIcon className={styles["close-icon"]} onClick={clearInputSearch} />
-                        }
-                    </div>
+                    {
+                        hasLinkToHomePage && 
+                        <div className={styles["header-search"]}>
+                            <SearchLineIcon className={styles["search-icon"]} />
+                            <input 
+                                type="text"
+                                placeholder="Search a Products"
+                                value={inputSearch}
+                                onChange={handleSearchFilterChange}
+                            />
+                            {
+                                inputSearch && <CloseLineIcon className={styles["close-icon"]} onClick={clearInputSearch} />
+                            }
+                        </div>
+                    }
                     <div className={styles["account"]}>
                         {
                             user 

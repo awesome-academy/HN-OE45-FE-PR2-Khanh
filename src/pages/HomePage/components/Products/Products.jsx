@@ -13,7 +13,9 @@ import ToastNotify from '../../../../components/ToastNotify/ToastNotify'
 
 function Products() {
     const { t } = useTranslation()
+    const pagination = useSelector( state => state.products.pagination)
     const dispatch = useDispatch()
+    const { _limit, _totalRows } = pagination
     const VIEW_MODES = [
         {
             value: 'grid',
@@ -72,10 +74,12 @@ function Products() {
     }
 
     function handleSortByProductsList(item) {
-        if (item === "Show All") {
+        if (item == "Show All") {
             dispatch(setFilter({
+                ...filter,
+                _limit: 8,
                 _page: 1,
-                _limit: 2
+                label_like: '',
             }))
             setProductsList(item)
         } else {
@@ -165,7 +169,10 @@ function Products() {
             {
                 viewMode == 'grid' ? <ListView /> : <GridView />
             }
-            <Pagination />
+            <Pagination 
+                _limit={_limit}
+                _totalRows={_totalRows}
+            />
         </div>
     );
 }

@@ -2,33 +2,31 @@ import React, { useState } from 'react';
 import styles from './Prices.module.sass'
 import {useTranslation} from 'react-i18next'
 import { useDispatch, useSelector} from 'react-redux'
-import { setFilter, setCurrentPage} from '../../../../store/slices/ProductSlice'
+import { setFilter, setCurrentPage, setValueGte, setValueLte } from '../../../../store/slices/ProductSlice'
 
 function Prices() {
-
     const { t } = useTranslation()
-    const [ valueGte, setValueGte ] = useState(0)
-    const [ valueLte, setValueLte ] = useState(0)
+    const { valueGte, valueLte } = useSelector(state => state.products.valuePrice)
     const [ errorInputPrice, setErrorInputPrice ] = useState('')
     const dispatch = useDispatch()
     const filter = useSelector(state => state.products.filter)
 
     function handleValueGte(e) {
         if ((e.target.value || valueLte) <= -1) {
-            setValueGte(e.target.value)
+            dispatch(setValueGte(e.target.value))
             setErrorInputPrice('Input value must be positive')
         } else if ((e.target.value && valueLte) >= 0) {
-            setValueGte(e.target.value)
+            dispatch(setValueGte(e.target.value))
             setErrorInputPrice('')
         }
     }
 
     function handleValueLte(e) {
         if ((e.target.value || valueGte) <= -1) {
-            setValueLte(e.target.value)
+            dispatch(setValueLte(e.target.value))
             setErrorInputPrice('Input value must be positive')
         } else if ((e.target.value && valueGte) >= 0) {
-            setValueLte(e.target.value)
+            dispatch(setValueLte(e.target.value))
             setErrorInputPrice('')
         }
     }

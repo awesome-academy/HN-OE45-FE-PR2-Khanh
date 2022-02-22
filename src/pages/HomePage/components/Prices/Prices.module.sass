@@ -2,25 +2,36 @@
 @import ../../../../styles/_mixins
 
 .prices
+    border-radius: 1rem
+    background-color: $white-color
     h2
         @include text($font-size: 2.4rem, $font-weight: 500)
         margin-bottom: 2rem
+        padding-left: 1rem
     .prices-range
         @include flex($flex-direction: column)
         row-gap: 2rem
         font-size: 2rem
         color: $text-black
-        padding-bottom: 1rem 
-        padding-left: 2rem
+        padding: 1rem
         cursor: pointer
     .values-input
         display: flex
-        column-gap: 2rem
+        column-gap: 0.5rem
+        @include maxWidth($tablet)
+            @include flex($flex-direction: column)
+        @include maxWidth($mobile)
+            @include flex($flex-direction: row)
     input
         padding: 0 1rem
         width: 10rem
         border-radius: 5px
         border: 1px solid $border-gray
+        @include maxWidth($tablet)
+            width: 100%
     button
         border-radius: 5px
         border: 1px solid $border-gray
+        &:hover
+            background: $text-blue
+            color: $white-color

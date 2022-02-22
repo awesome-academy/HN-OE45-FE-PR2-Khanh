@@ -3,7 +3,8 @@ import styles from './Categories.module.sass'
 import ArrowDropRightFillIcon from 'remixicon-react/ArrowDropRightFillIcon'
 import {useTranslation} from 'react-i18next'
 import { useSelector, useDispatch } from 'react-redux'
-import { getPostApi, setFilter, setCurrentPage } from '../../../../store/slices/ProductSlice'
+import { getPostApi, setFilter, setCurrentPage, setSelectedCategory } from '../../../../store/slices/ProductSlice'
+import clsx from 'clsx';
 
 function Categories() {
 
@@ -11,6 +12,7 @@ function Categories() {
     const dispatch = useDispatch()
     const { categoriesList } = useSelector(state => state.products.categories)
     const filter = useSelector(state => state.products.filter)
+    const category = useSelector(state => state.products.selected.category)
 
     useEffect(() => {
         dispatch(getPostApi())
@@ -22,6 +24,7 @@ function Categories() {
             _page: 1,
             categories_like: categories
         }))
+        dispatch(setSelectedCategory(categories))
         dispatch(setCurrentPage(1))
     }
 
@@ -32,7 +35,12 @@ function Categories() {
                 {
                     categoriesList.map( (item, index) => {
                         return (
-                            <li key={index} className={styles["item-categories"]} onClick={() => handleFilterCategories(item)}>
+                            <li key={index} className={clsx(styles["item-categories"],
+                                category && category.includes(item)
+                                ? styles["active"] : ""
+                                )} 
+                                onClick={() => handleFilterCategories(item)}
+                            >
                                 <ArrowDropRightFillIcon />
                                 {item}
                             </li>

@@ -35,7 +35,7 @@ function ProductDetails() {
     const handleFetchSimilarProducts = () => {
         dispatch(setFilterSimilar({
             ...filterSimilar,
-            _limit: _limit + 2
+            _limit: _limit + 4
         }))
     }
 

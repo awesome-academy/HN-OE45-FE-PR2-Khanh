@@ -25,19 +25,23 @@ function ProductItem({item}) {
     }
 
     return (
-        <div className={styles["item-products"]}>
+        <div className={styles["product-items"]}>
             <Link to={href} className="text-center">
                 <img src={`../assets/images/${item.image}`} alt="img"/>
             </Link>
             <div className={styles["product-preview"]}>
-                <span className={styles["product-name"]}>{item.name}</span>
-                <span className={styles["product-price"]}>{item.price}$</span>
-                <p className={styles["product-desc"]}>{item.desc}</p>
-                <div className="d-flex flex-column justify-content-center">
-                    <div className={styles["product-rating"]}>
-                        <Star 
-                            num={item.rating}
-                        />
+                <div className={styles["product-preview__top"]}>
+                    <span className={styles["product-name"]}>{item.name}</span>
+                    <p className={styles["product-desc"]}>{item.desc}</p>
+                </div>
+                <div className={styles["product-preview__bottom"]}>
+                    <div className="d-flex justify-content-between align-items-center">
+                        <span className={styles["product-price"]}>{item.price}$</span>
+                        <div className={styles["product-rating"]}>
+                            <Star 
+                                num={item.rating}
+                            />
+                        </div>
                     </div>
                     <button className={styles["add-cart"]} onClick={() => handleAddToCart(item)}>
                         <LuggageCartLineIcon />

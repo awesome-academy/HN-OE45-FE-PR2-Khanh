@@ -8,12 +8,12 @@ const initialState = {
         isLoading: false
     },
     pagination: {
-        _limit: 2,
+        _limit: 8,
         _totalRows: 1,
         isLoading: false
     },
     filter: {
-        _limit: 2,
+        _limit: 8,
         _page: 1,
         name_like: '',
         brand_like: '',
@@ -50,8 +50,17 @@ const initialState = {
         },
         filter: {
             _page: 1,
-            _limit: 2
+            _limit: 4
         }
+    },
+    selected: {
+        type: "",
+        category: "",
+        rating: []
+    },
+    valuePrice: {
+        valueGte: "",
+        valueLte: ""
     }
 }
 
@@ -63,7 +72,7 @@ export const getAllProducts = createAsyncThunk(
             const res = await axios(
                 {
                     method: 'GET',
-                    url: `http://localhost:4000/data?${paramString}`
+                    url: `${process.env.REACT_APP_DATA}/data?${paramString}`
                 }
               );
             return res.data
@@ -82,7 +91,7 @@ export const getPagination = createAsyncThunk(
             const res = await axios(
                 {
                     method: 'GET',
-                    url: `http://localhost:4000/data?${paramString}`
+                    url: `${process.env.REACT_APP_DATA}/data?${paramString}`
                 }
               );
             return res.data
@@ -101,7 +110,7 @@ export const getPostApi = createAsyncThunk(
             const res = await axios(
                 {
                     method: 'GET',
-                    url: `http://localhost:4000/data?${paramString}`
+                    url: `${process.env.REACT_APP_DATA}/data?${paramString}`
                 }
               );
             return res.data
@@ -116,7 +125,7 @@ export const getProductDetailsDbJson = createAsyncThunk(
     'products/details',
     async (id, { rejectWithValue }) => {
         try {
-            const res = await axios.get(`http://localhost:4000/data?id=${id}`)
+            const res = await axios.get(`${process.env.REACT_APP_DATA}/data?id=${id}`)
             return res.data
         } 
         catch (err) {
@@ -130,7 +139,47 @@ export const getSimilarProducts = createAsyncThunk(
     async (filter, { rejectWithValue }) => {
         try {
             const paramString = queryString.stringify(filter)
-            const res = await axios.get(`http://localhost:4000/data?${paramString}`)
+            const res = await axios.get(`${process.env.REACT_APP_DATA}/data?${paramString}`)
+            return res.data
+        }
+        catch(err) {
+            return rejectWithValue(err.res.data)
+        }
+    }
+)
+
+export const deleteProductItemDbJson = createAsyncThunk(
+    'products/delete',
+    async (id, { rejectWithValue }) => {
+        try {
+            const res = await axios.delete(`${process.env.REACT_APP_DATA}/data/${id}`)
+            return res.data
+        } 
+        catch (err) {
+            return rejectWithValue(err.res.data)
+        }
+    }
+)
+
+export const updateProductItemDbJson = createAsyncThunk(
+    'product/put',
+    async ({id, newProductUpdate}, { rejectWithValue }) => {
+        try {
+            console.log(newProductUpdate)
+            const res = await axios.put(`${process.env.REACT_APP_DATA}/data/${id}`, newProductUpdate)
+            return res.data
+        }
+        catch(err) {
+            return rejectWithValue(err.res.data)
+        }
+    }
+)
+
+export const addProductItemDbJson = createAsyncThunk(
+    'product/add',
+    async (newProduct, { rejectWithValue }) => {
+        try {
+            const res = await axios.post(`${process.env.REACT_APP_DATA}/data/`, newProduct)
             return res.data
         }
         catch(err) {
@@ -152,7 +201,7 @@ export const ProductsSlice = createSlice({
         clearAllFilter: (state) => {
             state.filter = {
                 ...state.filter,
-                _limit: 2,
+                _limit: 8,
                 _page: 1,
                 name_like: '',
                 brand_like: '',
@@ -165,6 +214,15 @@ export const ProductsSlice = createSlice({
             state.currentPage = 1
             state.viewMode = true
             state.inputSearch = ''
+            state.selected = {
+                type: "",
+                category: "",
+                rating: []
+            }
+            state.valuePrice = {
+                valueGte: "",
+                valueLte: ""
+            }
         },
         setInputSearch: (state, action) => {
             state.inputSearch = action.payload
@@ -177,6 +235,21 @@ export const ProductsSlice = createSlice({
         },
         setFilterSimilar: (state, action) => {
             state.productDetails.filter = action.payload
+        },
+        setSelectedType: (state, action) => {
+            state.selected.type = action.payload
+        },
+        setSelectedCategory: (state, action) => {
+            state.selected.category = action.payload
+        },
+        setSelectedRating: (state, action) => {
+            state.selected.rating.push(action.payload)
+        },
+        setValueGte: (state, action) => {
+            state.valuePrice.valueGte = action.payload
+        },
+        setValueLte: (state, action) => {
+            state.valuePrice.valueLte = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -281,6 +354,6 @@ export const ProductsSlice = createSlice({
     }
 })
 
-export const { setFilter, setCurrentPage, clearAllFilter, setInputSearch, setRelatedSearch, setFilterSimilar } = ProductsSlice.actions
+export const { setFilter, setCurrentPage, clearAllFilter, setInputSearch, setRelatedSearch, setFilterSimilar, setSelectedType, setSelectedCategory, setValueGte, setValueLte, setSelectedRating } = ProductsSlice.actions
 
 export default ProductsSlice.reducer

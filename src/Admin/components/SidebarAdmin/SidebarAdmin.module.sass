@@ -1,0 +1,41 @@
+@import ../../../styles/_variables
+@import ../../../styles/_mixins
+    
+.manager-sidebar
+    background-color: $bg-admin
+    min-height: 100vh
+    .manager-list
+        width: 22.5rem
+        padding: 0 2rem
+        @include flex($flex-direction: column)
+        row-gap: 0.5rem
+        list-style: none
+        color: $text-sidebar
+    .sidebar-name
+        @include flex($flex-direction: row, $justify-content: center, $align-items: center)
+        @include text($font-size: 2rem, $font-weight: 700)
+        padding: 2rem 0
+        text-decoration: none
+        text-transform: uppercase
+        z-index: 1
+        color: $white-color
+        column-gap: 1rem
+    .manager-title
+        font-size: 2.4rem
+        color: $white-color
+        font-weight: 700
+        margin-bottom: 2rem
+    .manager-item
+        margin-bottom: 2rem
+        padding: 0 0 0 2rem
+        a
+            font-size: 2rem
+            @include flex($flex-direction: row, $align-items: center)
+            color: $text-sidebar
+            text-decoration: none
+            column-gap: 1rem
+            &:hover
+                color: $white-color
+        .active
+            color: $white-color
+            font-weight: 500

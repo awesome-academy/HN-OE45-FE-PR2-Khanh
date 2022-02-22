@@ -8,7 +8,7 @@ import { regexEmail, regexPassword, regexPhone } from '../../consts/consts'
 import { useTranslation } from 'react-i18next'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from "../../firebase-config";
-import { addUserDbJson, setDisplayName } from '../../store/slices/UserSlice'
+import { addUserDbJson } from '../../store/slices/UserSlice'
 import { useDispatch, useSelector } from 'react-redux' 
 import ToastNotify from '../../components/ToastNotify/ToastNotify'
 import { setNotification } from '../../store/slices/NotificationSlice'
@@ -43,7 +43,7 @@ function Register() {
             password:
                 Yup.string()
                 .required(t("Required"))
-                .matches(regexPassword,t("Password must be 7-19 charactors and contain at least one uppercase letter, one lowercase letter and one number")),
+                .matches(regexPassword,t("Password must be 8-19 charactors and contain at least one uppercase letter, one lowercase letter and one number")),
             confirmPassword: 
                 Yup.string()
                 .required(t("Required"))
@@ -58,7 +58,7 @@ function Register() {
                     password
                 )
                 const user = userFirebase.user
-                const newUser = { id: user.uid, fullName, email, phone, password, carts: [], address: [], role: 2 }
+                const newUser = { id: user.uid, fullName, email, phone, password, role: 2 }
                 dispatch(setNotification({type: 'success', message: t('Register Success')}))
                 localStorage.setItem('customer-info', JSON.stringify({
                     fullName,
